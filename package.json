@@ -1,0 +1,30 @@
+{
+  "name": "blu3-helpers",
+  "version": "1.0.7",
+  "description": "Blu3 Helpers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moziah7/blu3-helpers.git"
+  },
+  "keywords": [
+    "blu3"
+  ],
+  "author": "Mehmet Çığırgan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moziah7/blu3-helpers/issues"
+  },
+  "homepage": "https://github.com/Moziah7/blu3-helpers#readme",
+  "dependencies": {
+    "antd": "^5.10.1",
+    "ethers": "5.7",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-countdown": "^2.3.5",
+    "react-hot-toast": "^2.4.1"
+  }
+}
