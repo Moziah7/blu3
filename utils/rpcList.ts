@@ -1,4 +1,9 @@
-export const multichainRpc = {
+interface RpcList {
+  [chainId: number]: string[];
+  undefined?: string[];
+}
+
+export const rpcList: RpcList = {
   56: [
     "https://bsc-dataseed.binance.org/",
     "https://bsc-dataseed1.ninicoin.io",
@@ -55,7 +60,6 @@ export const multichainRpc = {
     "https://arbitrum.blockpi.network/v1/rpc/public",
   ],
   80001: [
-    "https://polygon-mumbai.g.alchemy.com/v2/0ORsvD9y8x1JBZJ1lIlNU_-8ILbUSkuF",
     "https://matic-mumbai.chainstacklabs.com",
     "https://polygon-mumbai.blockpi.network/v1/rpc/public",
     "https://polygon-testnet.public.blastapi.io",
@@ -73,12 +77,6 @@ export const multichainRpc = {
     "https://data-seed-prebsc-2-s3.binance.org:8545",
   ],
   11155111: [
-    "https://eth-sepolia.g.alchemy.com/v2/587rhpE56Yqjv4384ZR3evg1JZ0h8fiX",
-    "https://eth-sepolia.g.alchemy.com/v2/587rhpE56Yqjv4384ZR3evg1JZ0h8fiX",
-    "https://eth-sepolia.g.alchemy.com/v2/587rhpE56Yqjv4384ZR3evg1JZ0h8fiX",
-    "https://eth-sepolia.g.alchemy.com/v2/587rhpE56Yqjv4384ZR3evg1JZ0h8fiX",
-    "https://eth-sepolia.g.alchemy.com/v2/587rhpE56Yqjv4384ZR3evg1JZ0h8fiX",
-    "https://eth-sepolia.g.alchemy.com/v2/587rhpE56Yqjv4384ZR3evg1JZ0h8fiX",
     "https://rpc2.sepolia.org",
     "https://rpc.sepolia.org",
     "https://eth-sepolia.public.blastapi.io",
@@ -87,11 +85,17 @@ export const multichainRpc = {
     "https://ethereum-sepolia.blockpi.network/v1/rpc/public",
   ],
   undefined: [
-    "https://data-seed-prebsc-1-s1.binance.org:8545",
-    "https://data-seed-prebsc-2-s1.binance.org:8545",
-    "https://data-seed-prebsc-1-s2.binance.org:8545",
-    "https://data-seed-prebsc-2-s2.binance.org:8545",
-    "https://data-seed-prebsc-1-s3.binance.org:8545",
-    "https://data-seed-prebsc-2-s3.binance.org:8545",
+    "https://bsc-dataseed.binance.org/",
+    "https://bsc-dataseed1.ninicoin.io",
+    "https://bsc-dataseed2.ninicoin.io",
+    "https://bsc-dataseed3.ninicoin.io",
+    "https://bsc-dataseed1.defibit.io",
+    "https://bsc-dataseed2.defibit.io",
+    "https://bsc-dataseed3.defibit.io",
+    "https://rpc.ankr.com/bsc",
+    "https://bsc-dataseed1.binance.org/",
+    "https://bsc-dataseed2.binance.org/",
+    "https://bsc-dataseed3.binance.org/",
+    "https://bsc-dataseed4.binance.org/",
   ],
 };

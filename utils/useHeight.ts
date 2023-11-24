@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
-export const useHeight = () => {
+export const useHeight = (): number => {
+  if (typeof window === "undefined") return 0;
+  
   const [height, setHeight] = useState(window?.innerHeight ?? 0);
 
   useEffect(() => {

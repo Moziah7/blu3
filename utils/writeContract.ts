@@ -1,7 +1,19 @@
-import { ethers } from "ethers";
-import { toast } from "react-hot-toast";
+import { ethers } from 'ethers';
+import { toast } from 'react-hot-toast';
 
-export const writeContract = async (data) => {
+interface WriteContractData {
+  signer: ethers.Signer | any;
+  address: string;
+  abi: any[];
+  method: string;
+  args?: any[];
+  val?: string;
+  chainId?: number;
+  switchNetworkAsync: (chainId: number) => Promise<void>;
+  message?: string;
+}
+
+export const writeContract = async (data: WriteContractData): Promise<string | ethers.ContractReceipt> => {
   const loadToast = toast.loading("Transaction processing...");
 
   try {
@@ -10,36 +22,43 @@ export const writeContract = async (data) => {
       address,
       abi,
       method,
-      message,
       args,
       val,
       chainId,
       switchNetworkAsync,
+      message,
     } = data;
+
+    if (!address || !abi || !method) {
+      toast.error("address, abi or method not provided");
+      toast.dismiss(loadToast);
+      return "err";
+    }
 
     if (signer == null) {
       toast.error("Please connect your wallet");
       toast.dismiss(loadToast);
       return "err";
     }
-    let signerChainId = signer?.provider?._network?.chainId;
+    let signerChainId = signer.provider?._network?.chainId;
 
     if (chainId !== undefined) {
       if (chainId !== signerChainId) {
-        switchNetworkAsync(chainId);
         toast.error("Please switch to the correct network");
         toast.dismiss(loadToast);
+        await switchNetworkAsync(chainId);
         return "err";
       }
     }
 
     const contract = new ethers.Contract(address, abi, signer);
 
-    let val_ = val;
+    let val_: string | ethers.BigNumber | undefined = val;
     if (!val_) {
       val_ = ethers.utils.parseUnits("0", 0);
     }
-    let args_ = args;
+    
+    let args_: any[] | undefined = args;
     if (!args_) {
       args_ = [];
     }
@@ -54,7 +73,7 @@ export const writeContract = async (data) => {
 
     return receipt;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     toast.error(
       error
         ? error.reason !== undefined
