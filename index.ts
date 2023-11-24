@@ -4,6 +4,8 @@ export {
   useCurrentTime,
   readContract,
   writeContract,
+  getAddress,
+  useSigner,
   nativeBalance,
   explorerList,
   rpcList,
