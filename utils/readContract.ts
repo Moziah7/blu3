@@ -23,6 +23,7 @@ export const readContract = async (data: ReadContractData): Promise<any> => {
     let args_ = args || [];
 
     let contract: ethers.Contract | null = null;
+    
     const getContract = async (rpcUrl: string): Promise<ethers.Contract> => {
       try {
         const providerIn = new ethers.providers.StaticJsonRpcProvider(rpcUrl);
